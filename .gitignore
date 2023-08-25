@@ -1,0 +1,12 @@
+# Directorios
+node_modules/
+dist/
+build/
+coverage/
+
+# Archivos
+.env
+.env.*
+*.log
+
+# Dependiendo de tu entorno de desarrollo, podrías querer añadir más entradas aquí, como archivos generados por tu editor o IDE.
