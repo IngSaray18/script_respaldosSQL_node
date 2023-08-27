@@ -2,24 +2,24 @@ import  express  from "express";
 import { exec }  from 'child_process';
 import { Server as SocketServer } from "socket.io";
 import http, { createServer } from "http";
+
 const app = express();
-
 const server = http.createServer(app);
-
-const io = new SocketServer(server, { 
+const ioServer1 = new SocketServer(server, { 
   cors: {
       origin: 'http://localhost:5173'
   }
 } )
 
+
 const puerto = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Servidor en ejecución');
+  res.send('Servidor 164 en ejecución');
 });
 
-io.on('connection', (socket) => {
-  console.log('Cliente conectado');
+ioServer1.on('connection', (socket) => {
+  console.log('Cliente conectado al Servidor 164');
 
   socket.on('ejecutar-comando', (comando) => {
     if (!comando) {
@@ -40,11 +40,13 @@ io.on('connection', (socket) => {
 
       socket.emit('resultado', resultado);
     });
-  }); 
+  });
 
-
-} )
+  socket.on('disconnect', () => {
+    console.log('Cliente desconectado del Servidor 164');
+  });
+});
 
 server.listen(puerto, () => {
-  console.log(`Servidor en ejecución en http://localhost:${puerto}`);
+  console.log(`Servidor 164 en ejecución en http://localhost:${puerto}`);
 });
