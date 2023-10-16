@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const app = express();
-
+ 
 
 //conecxion a base de datos
 // URL de conexión a la base de datos MongoDB
